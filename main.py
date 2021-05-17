@@ -33,9 +33,10 @@ def handle_collisions(blob_list):
                         
     return blob_list
 
-def draw_environment(blob_list):
+def draw_environment(blob_list, with_colisions):
     game_display.fill(WHITE)
-    handle_collisions(blob_list)
+    if with_colisions:
+      handle_collisions(blob_list)
     for blob_dict in blob_list:
         for blob_id in blob_dict:
             blob = blob_dict[blob_id]
@@ -51,7 +52,7 @@ def draw_environment(blob_list):
     pygame.display.update()
 
         
-def main():
+def main(with_colisions = True):
     blue_blobs = dict(enumerate([BlueBlob(WIDTH,HEIGHT) for i in range(STARTING_BLUE_BLOBS)]))
     red_blobs = dict(enumerate([RedBlob(WIDTH,HEIGHT) for i in range(STARTING_RED_BLOBS)]))
     green_blobs = dict(enumerate([GreenBlob(WIDTH,HEIGHT) for i in range(STARTING_GREEN_BLOBS)]))
@@ -63,8 +64,8 @@ def main():
                 pygame.quit()
                 quit()
 
-        draw_environment([blue_blobs, red_blobs, green_blobs, orange_blobs])
+        draw_environment([blue_blobs, red_blobs, green_blobs, orange_blobs], with_colisions)
         clock.tick(20)
 
 if __name__ == '__main__':
-    main()
+    main(with_colisions = True)
