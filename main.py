@@ -68,4 +68,4 @@ def main(with_colisions = True):
         clock.tick(20)
 
 if __name__ == '__main__':
-    main(with_colisions = True)
+    main(with_colisions = False)
